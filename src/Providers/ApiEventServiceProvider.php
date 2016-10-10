@@ -41,5 +41,9 @@ class ApiEventServiceProvider extends ServiceProvider
         Event::listen('tymon.jwt.invalid', function () {
             return $this->response->send([], ['Token invalid'], ResponseApi::STATUS_INVALID);
         });
+
+        Event::listen('tymon.jwt.user_not_found', function () {
+            return $this->response->send([], ['User could not be found'], ResponseApi::STATUS_USER_NOT_FOUND);
+        });
     }
 }
